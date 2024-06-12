@@ -1,0 +1,4 @@
+Berke Gürbüz:80,90,100
+Cabbar Kerim:20,30,40 
+Oğuz Demir:75,12,54
+
