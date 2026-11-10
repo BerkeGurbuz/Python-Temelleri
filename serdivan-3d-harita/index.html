@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="tr" data-tema="acik">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Serdivan 3D İşletme Haritası</title>
+  <meta name="description" content="Sakarya / Serdivan ilçesindeki işletmelerin etkileşimli 3 boyutlu haritası.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2c-5.5 0-10 4.3-10 9.7C6 19 16 30 16 30s10-11 10-18.3C26 6.3 21.500 2 16 2z' fill='%230f766e'/%3E%3Ccircle cx='16' cy='12' r='4' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="vendor/maplibre-gl.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="harita" role="application" aria-label="Serdivan 3 boyutlu harita"></div>
+
+  <aside id="panel" aria-label="İşletme listesi">
+    <button id="panel-tutamac" type="button" aria-label="Paneli aç veya kapat"><span></span></button>
+
+    <header class="panel-baslik">
+      <div>
+        <h1>Serdivan <span>3D</span></h1>
+        <p id="ozet">İşletmeler yükleniyor…</p>
+      </div>
+    </header>
+
+    <section id="liste-gorunumu">
+      <div class="arama">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.800-3.800"/></svg>
+        <input id="arama" type="search" placeholder="İşletme, tür veya sokak ara…" autocomplete="off" aria-label="İşletme ara">
+      </div>
+
+      <div id="kategoriler" class="cipler" role="group" aria-label="Kategoriler"></div>
+
+      <div class="liste-ust">
+        <span id="sonuc-sayisi"></span>
+        <label class="anahtar"><input type="checkbox" id="sadece-gorunen"> Yalnızca görünen alan</label>
+      </div>
+
+      <ul id="liste"></ul>
+    </section>
+
+    <section id="detay" hidden></section>
+
+    <footer class="panel-alt">
+      Veri © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> katkıcıları
+      · <a href="https://overturemaps.org" target="_blank" rel="noopener">Overture Maps</a>
+      <span id="veri-tarihi"></span>
+    </footer>
+  </aside>
+
+  <nav id="araclar" aria-label="Harita araçları">
+    <button type="button" id="btn-ev" title="Serdivan'a dön">Serdivan</button>
+    <button type="button" id="btn-3d" title="2B / 3B görünüm" aria-pressed="true">3B</button>
+    <button type="button" id="btn-don" title="Haritayı kendi etrafında döndür" aria-pressed="false">Döndür</button>
+    <button type="button" id="btn-arazi" title="Arazi yükseltisini (tepeler, vadiler) aç / kapat" aria-pressed="false">Arazi</button>
+    <button type="button" id="btn-tema" title="Gündüz / gece haritası" aria-pressed="false">Gece</button>
+  </nav>
+
+  <div id="bildirim" role="status" aria-live="polite" hidden></div>
+
+  <script src="vendor/maplibre-gl.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
